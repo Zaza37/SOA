@@ -1,4 +1,62 @@
 
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+%\hypersetup{
+%colorlinks=false,              % bool: Liens colorés
+%pdfborder={0 0 0}             % Ne pas encadrer les liens
+%}
+\usepackage[utf8]{inputenc}  
+\usepackage[francais]{babel}  
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage[final]{pdfpages} 
+\usepackage{rotating}
+\usepackage{eurosym}
+\usepackage{lscape}
+\usepackage{float}
+% définir les commandes ici
+
+% s'il y a beaucoup de commandes et de packages à inclure n'h&ésitez pas
+% à mettre tout ça dans un fichier include.tex et l'inclure
+% \input{include.tex}
+
+
+\begin{document}
+
+%------------------------------------- Page de titre
+\begin{titlepage}
+~ 
+\vfill
+	\begin{center}
+		\begin{Huge}
+		SOA : Dossier d'architecture technique\\
+		\end{Huge} 
+\vfill
+		\textbf{Hexanome 4211 :} 
+		\\Sandra \bsc{Mondain}, Elisa \bsc{Abidh}, 
+		\\Gaël \bsc{Motte}, Armand \bsc{Rossius}, 
+		\\Rémi \bsc{Fradet}, Nicolas \bsc{Silva}, Julien \bsc{Levesy}\\
+
+\vfill		
+		\begin{Large}
+		Avril 2011
+		\end{Large}
+\vfill
+
+	\end{center}
+\vfill
+\end{titlepage}
+%----------------------------------------------------
+
+%--------------------------------- Table des matières
+\newpage
+\tableofcontents
+\newpage
+%----------------------------------------------- Plan
+
+\section*{Intro}
+
 \section{Architecture générale}
 
 %\includegraphics{archi_base.png}
@@ -10,13 +68,13 @@ L'architecture du nouveau système d'information doit offrir une visibilité dan
 Chaque agence possède un réseau placé derrière un pare-feu, comprenant deux sous-réseaux.
 \begin{itemize}
   \item Le premier sous-réseau est placé en dessous d'un routeur VPN, créant ainsi un réseau virtuel global et sécurisé, sur lequel sont échangées les informations entre agences. Les bases de données ainsi que les postes de travail des agents sont également placés dans ce sous-réseau.
-  \item Le second sous-réseau comprend, si besoin, les services dont la sécurité est plus difficile à assurer. Il est en effet important ne pas placer, par exemple, un service web ouvert aux clients de la banque, très suceptible d'essuyer des attaques, sur le même sous-réseau que les bases de données comportant des informations confidentielles ou organisationnelles. 
+  \item Le second sous-réseau comprend, si besoin, les services dont la sécurité est plus difficile à assurer. Il est en effet important ne pas placer, par exemple, un service web ouvert aux clients de la banque, très susceptible d'essuyer des attaques, sur le même sous-réseau que les bases de données comportant des informations confidentielles ou organisationnelles. 
 \end{itemize}
 
 \includegraphics{Includes/archi_agence.png}
 
 
-\subsection{Architecture du système au niveau nationnal}
+\subsection{Architecture du système au niveau national}
 \subsubsection{ Stockage des données }
 
 Les données sont réparties en fonction de leur nature :
@@ -39,3 +97,5 @@ Une base de donnée virtuelle est un programme qui intérroge les serveurs de do
 ~\\
 Ainsi, les requêtes d'accès et de modification des données passent par les application de virtualisation de bases de données qui fournissent une interface unifiée, simplifiée et transparentes à toutes les agences.
 
+
+\end{document}
