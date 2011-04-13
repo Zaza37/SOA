@@ -169,7 +169,7 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item ajouterProposition
+		\item ajouterProposition[Contact]
 	\end{itemize}
 	\item E : liste id\_offres, id\_contact
 	\item S : aucun
@@ -183,7 +183,7 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item sauvergarderCR
+		\item sauvergarderCR[Contact]
 	\end{itemize}
 	\item E : id\_contact, texte
 	\item S : aucun
@@ -201,7 +201,7 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item sauvergarderRapportActivite
+		\item sauvergarderRapportActivite[Contact]
 	\end{itemize}
 	\item E : id\_contact, texte
 	\item S : aucun
@@ -217,7 +217,7 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item accepterProposition
+		\item accepterProposition[Contact]
 	\end{itemize}
 	\item E : id\_contact, id\_proposition
 	\item S : aucun
@@ -231,7 +231,7 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item refuserProposition
+		\item refuserProposition[Contact]
 	\end{itemize}
 	\item E : id\_contact, id\_proposition
 	\item S : aucun
@@ -245,9 +245,9 @@ idem UC3 : GetContactByAgent
 \begin{itemize}
 	\item SOM invoqués :
 	\begin{itemize}
-		\item getCRPreparation
-		\item getPropositions
-		\item getOffre
+		\item getCRPreparation[Contact]
+		\item getPropositions[Contact]
+		\item getOffre[Produit]
 	\end{itemize}
 	\item E : id\_contact
 	\item S : CRPréparation, liste propositions(id\_proposition, id\_offre, nom de l’offre)
