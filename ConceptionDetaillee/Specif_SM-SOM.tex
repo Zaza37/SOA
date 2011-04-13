@@ -42,17 +42,17 @@
 \subsubsection{SM : AffecterAgent}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item AffecterAgent [Bloc Contact]
-			\item MAJPotentielMensuel [Bloc Structure]
-		\end{itemize}
+	\begin{itemize}
+		\item AffecterAgent [Bloc Contact]
+		\item MAJPotentielMensuel [Bloc Structure]
+	\end{itemize}
 	\item E : idContact, idAgent
 	\item S : aucune
 	\item Procédure : 
-		\begin{itemize}
-			\item Association d’un agent à un contact : AffecterAgent
-			\item Calcul du nouveau potentiel mensuel de l’agent concerné par cette affectation : MAJPotentielMensuel
-		\end{itemize}.
+	\begin{itemize}
+		\item Association d’un agent à un contact : AffecterAgent
+		\item Calcul du nouveau potentiel mensuel de l’agent concerné par cette affectation : MAJPotentielMensuel
+	\end{itemize}.
 \end{itemize}
 
 
@@ -63,19 +63,19 @@
 \subsubsection{SM : GetContactByAgent}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item GetContactByAgent [Bloc Contact]
-			\item GetInfoClient [Bloc Client]
-			\item GetPersonnel [Bloc Personne]
-		\end{itemize}
+	\begin{itemize}
+		\item GetContactByAgent [Bloc Contact]
+		\item GetInfoClient [Bloc Client]
+		\item GetPersonnel [Bloc Personne]
+	\end{itemize}
 	\item E : liste d’idContact, 
 	\item S : Liste de Contacts : idContact, motif, état du contact, Client concerné (nom)
 	\item Procédure : 
-		\begin{itemize}
-			\item Récupère tous les contacts affectés à un agent : GetContactByAgent
-			\item Récupère les information de tous els clients concernés par ces contacts : GetInfoClient
-			\item Récupère les informations concernant les personnes référentes des clients concernés : GetPersonnel
-		\end{itemize}.
+	\begin{itemize}
+		\item Récupère tous les contacts affectés à un agent : GetContactByAgent
+		\item Récupère les information de tous les clients concernés par ces contacts : GetInfoClient
+		\item Récupère les informations concernant les personnes référentes des clients concernés : GetPersonnel
+	\end{itemize}.
 \end{itemize}
 
 
@@ -88,65 +88,82 @@ idem UC3 : GetContactByAgent
 \subsubsection{SM : CreateGroupContact}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item CreateGroupContact [Bloc Contact]
-		\end{itemize}
+	\begin{itemize}
+		\item CreateGroupContact [Bloc Contact]
+	\end{itemize}
 	\item E : liste d’idContact
 	\item S : validation du SM
 	\item Procédure : 
-		\begin{itemize}
-			\item Crée un groupe de contacts unissant tous les contacts dont les identifiants sont passés en paramètre : CreateGroupContact
-		\end{itemize}.
+	\begin{itemize}
+		\item Crée un groupe de contacts unissant tous les contacts dont les identifiants sont passés en paramètre : CreateGroupContact
+	\end{itemize}.
 \end{itemize}
 
 \subsubsection{SM : CancelContact}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item CancelContact [Bloc Contact]
-			\item SetContact [Bloc Contact]
-		\end{itemize}
+	\begin{itemize}
+		\item CancelContact [Bloc Contact]
+		\item SetContact [Bloc Contact]
+	\end{itemize}
 	\item E : idContact, motif
 	\item S : validation du SM
 	\item Procédure : 
-		\begin{itemize}
-			\item Annulation du Contact, avec affectation d’un motif d’annulation : CancelContact
-		\end{itemize}.
+	\begin{itemize}
+		\item Annulation du Contact, avec affectation d’un motif d’annulation : CancelContact
+	\end{itemize}.
 \end{itemize}
 
 
 
-\subsection{UC4 : Plannification des contacts commerciaux}
+\subsection{UC6 : Plannification des contacts commerciaux}
 
 \subsubsection{SM : CreerContactSpontane}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item CreerContactSpontane [Bloc Contact]
-		\end{itemize}
+	\begin{itemize}
+		\item CreerContactSpontane [Bloc Contact]
+	\end{itemize}
 	\item E : idClient
 	\item S : aucun
 	\item Procédure : 
-		\begin{itemize}
-			\item Crée un contact spontané pour un client donné : CreerContactSpontane
-		\end{itemize}.
+	\begin{itemize}
+		\item Crée un contact spontané pour un client donné : CreerContactSpontane
+	\end{itemize}.
 \end{itemize}
 
-\subsubsection{SM : TraiterContactEnAttente}
+\subsubsection{SM : ConsulterContacts}
 \begin{itemize}
 	\item SOM invoqués : 
-		\begin{itemize}
-			\item GetListContacts [Bloc Contact]
-		\end{itemize}
+	\begin{itemize}
+		\item GetContactByAgent [Bloc Contact]
+	\end{itemize}
 	\item E : idAgent
-	\item S : Liste d’idContact, 
+	\item S : Liste d’idContact, motif du contact, état
 	\item Procédure : 
-		\begin{itemize}
-			\item Crée un contact spontané pour un client donné : CreerContactSpontane
-		\end{itemize}.
+	\begin{itemize}
+		\item Retourne les informations concernant les contacts d'un agent : GetContactByAgent
+	\end{itemize}.
 \end{itemize}
 
----------------------------------
+\subsubsection{SM : CreerRDV}
+\begin{itemize}
+	\item SOM invoqués : 
+	\begin{itemize}
+		\item PrendreRDV [Bloc Contact]
+		\item GetDetailContact [Agenda]
+	\end{itemize}
+	\item E : idAgent, idContact, idClient, plageCible
+	\item S : aucune
+	\item Procédure : 
+	\begin{itemize}
+		\item Fait passer l’état du contact de affecté à rendez-vous pris
+		\item Obtenir les détails du contact
+	\end{itemize}.
+\end{itemize}
+
+
+
 \subsection{UC8 : Préparation d’entretien par un agent}
 \subsubsection{SM : ajouterPropositions}
 \begin{itemize}
@@ -323,20 +340,12 @@ Pas de SOM du bloc contact
 
 
 \subsection{UC6 : Planification des contact commerciaux}
-\subsubsection{SOM : getListContacts}
+\subsubsection{SOM : GetContactByAgent}
 	\begin{itemize}
 		\item E : id\_agent
 		\item S : liste contacts(id\_contact, date du contact, motif du contact...)
 		\item Entité/Classe : Contact, Motif de contact
-		\item Rôle : Renvoi la liste des contacts
-	\end{itemize}
-
-\subsubsection{SOM : getDetailsContact}
-	\begin{itemize}
-		\item E : id\_contact
-		\item S : infos\_contact(date du contact, motif du contact...)
-		\item Entité/Classe : Contact, Motif de contact
-		\item Rôle : Renvoie les informations sur un contact
+		\item Rôle : Renvoi la liste des contacts pour un agent donné
 	\end{itemize}
 
 \subsubsection{SOM : prendreRDV}
